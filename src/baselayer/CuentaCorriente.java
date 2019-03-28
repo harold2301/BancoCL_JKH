@@ -2,8 +2,7 @@ package baselayer;
 
 public class CuentaCorriente extends Cuenta {
 
-    public CuentaCorriente() {
-    }
+    public CuentaCorriente() {}
 
     @Override
     public String toString() {
