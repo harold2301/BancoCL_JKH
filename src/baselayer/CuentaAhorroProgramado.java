@@ -3,6 +3,8 @@ package baselayer;
 public class CuentaAhorroProgramado extends Cuenta{
     private CuentaCorriente cuentaCorriente; //solo 1
 
+    public CuentaAhorroProgramado() {}
+    
     public CuentaAhorroProgramado(CuentaCorriente cuentaCorriente) {
         this.cuentaCorriente = cuentaCorriente;
     }
