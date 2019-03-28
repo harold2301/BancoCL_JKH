@@ -33,7 +33,6 @@ public class Controller {
 
     }
     
-<<<<<<< HEAD
     public int enviarCuenta(String numero, double monto) {
         
         int pos = logica.buscarCuenta(numero);
@@ -49,8 +48,8 @@ public class Controller {
         } 
         
         return pos;
-        
-=======
+    }
+    
     public int enviarCuentaAhorro(String numeroCuenta, double saldoInicial) {
         int valida;
 
@@ -68,8 +67,7 @@ public class Controller {
 
     }
 
-    public void enviarCuenta() {
-        CuentaAhorroProgramado nuevaCuenta = new CuentaAhorroProgramado();
->>>>>>> 8f9eb675674d78813831c0ecd6d426a3c6489c69
+    public void enviarDeposito(String numero, double monto) {
+        
     }
 }

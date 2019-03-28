@@ -12,7 +12,6 @@ public class CL {
     public CL() {
         this.cuentas = new ArrayList();
     }
-<<<<<<< HEAD
     
     public void agregarCuenta(Cuenta nuevaCuenta) {
         this.cuentas.add(nuevaCuenta);
@@ -31,7 +30,6 @@ public class CL {
         
         return -1;
     }
-=======
 
     public int validarCuentaCorriente(CuentaCorriente CC) {
 
@@ -63,5 +61,4 @@ public class CL {
         cuentas.add(CA);
     }
 
->>>>>>> 8f9eb675674d78813831c0ecd6d426a3c6489c69
 }
