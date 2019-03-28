@@ -1,14 +1,19 @@
 package transferlayer;
 
+<<<<<<< HEAD
 import baselayer.CuentaCorriente;
+=======
+import baselayer.CuentaAhorroProgramado;
+>>>>>>> 0695dd1d78bc80f322e4d007426dd3b5e407d009
 import datalayer.CL;
-import java.time.LocalDate;
 
+//hola prros
 public class Controller {
     private final CL logica = new CL();
 
     public Controller() {
     
+<<<<<<< HEAD
     }
     
     public int enviarCuentaCorriente (String numeroCuenta, double saldoInicial){
@@ -19,5 +24,9 @@ public class Controller {
         CC.setNumero(numeroCuenta);
         CC.setSaldo(saldoInicial);
         return valida;
+=======
+    public void enviarCuenta() {
+        CuentaAhorroProgramado nuevaCuenta = new CuentaAhorroProgramado(); 
+>>>>>>> 0695dd1d78bc80f322e4d007426dd3b5e407d009
     }
 }

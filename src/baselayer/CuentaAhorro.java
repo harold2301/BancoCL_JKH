@@ -2,8 +2,7 @@ package baselayer;
 
 public class CuentaAhorro extends Cuenta {
 
-    public CuentaAhorro() {
-    }
+    public CuentaAhorro() {}
 
     @Override
     public String toString() {
