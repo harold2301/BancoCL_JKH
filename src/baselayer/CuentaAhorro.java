@@ -1,3 +1,5 @@
+package baselayer;
+
 public class CuentaAhorro extends Cuenta {
 
     public CuentaAhorro() {
@@ -5,13 +7,14 @@ public class CuentaAhorro extends Cuenta {
 
     @Override
     public String toString() {
-        return "CuentaAhorro{" +
-                "saldo=" + saldo +
-                ", numero=" + numero +
-                '}';
+        return "Saldo: " + getSaldo() 
+                + "Número: " + getNumero();
     }
 
+    @Override
     public void Retiro(){};
+    
+    @Override
     public void Depositos(){};
 
 }

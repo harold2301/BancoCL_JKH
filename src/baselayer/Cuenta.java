@@ -1,6 +1,8 @@
+package baselayer;
+
 public abstract class Cuenta {
-    protected double saldo;
-    protected int numero;
+    private double saldo;
+    private int numero;
 
     public double getSaldo() {
         return saldo;
@@ -20,10 +22,8 @@ public abstract class Cuenta {
 
     @Override
     public String toString() {
-        return "Cuenta{" +
-                "saldo=" + saldo +
-                ", numero=" + numero +
-                '}';
+        return "Saldo: " + saldo 
+                + "\nNúmero: " + numero;
     }
 
     public abstract void Retiro();

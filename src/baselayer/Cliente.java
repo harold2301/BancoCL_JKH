@@ -1,3 +1,5 @@
+package baselayer;
+
 import java.util.ArrayList;
 
 public class Cliente {
@@ -47,11 +49,9 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return "Cliente{" +
-                "nombre='" + nombre + '\'' +
-                ", cedula='" + cedula + '\'' +
-                ", direccion='" + direccion + '\'' +
-                ", cuentas=" + cuentas +
-                '}';
+        return "Nombre: " + nombre 
+                + "\nCédula: " + cedula 
+                + "\nDirección: " + direccion 
+                + "\nCuentas: " + cuentas;
     }
 }

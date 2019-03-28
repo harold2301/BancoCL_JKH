@@ -1,3 +1,5 @@
+package baselayer;
+
 public class CuentaAhorroProgramado extends Cuenta{
     private CuentaCorriente cuentaCorriente; //solo 1
 
@@ -15,13 +17,13 @@ public class CuentaAhorroProgramado extends Cuenta{
 
     @Override
     public String toString() {
-        return "CuentaAhorroProgramado{" +
-                "cuentaCorriente=" + cuentaCorriente +
-                ", saldo=" + saldo +
-                ", numero=" + numero +
-                '}';
+        return "CuentaCorriente: " + cuentaCorriente.toString() +
+                "\nSaldo: " + getSaldo() +
+                "\nNúmero: " + getNumero();
     }
 
+    @Override
     public void Retiro(){};
+    @Override
     public void Depositos(){};
 }

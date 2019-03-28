@@ -1,3 +1,5 @@
+package baselayer;
+
 public class CuentaCorriente extends Cuenta {
 
     public CuentaCorriente() {
@@ -5,12 +7,15 @@ public class CuentaCorriente extends Cuenta {
 
     @Override
     public String toString() {
-        return "CuentaCorriente{" +
-                "saldo=" + saldo +
-                ", numero=" + numero +
-                '}';
+        return "CuentaCorriente"
+                + "\nSaldo: " + getSaldo()
+                + "\nNúmero: " + getNumero();
     }
 
-    public void Retiro(){};
-    public void Depositos(){};
+    @Override
+    public void Retiro() {}
+    
+    @Override
+    public void Depositos() {}
+;
 }
