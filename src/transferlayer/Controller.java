@@ -1,5 +1,6 @@
 package transferlayer;
 
+import baselayer.Cuenta;
 import baselayer.CuentaAhorro;
 import baselayer.CuentaCorriente;
 import baselayer.CuentaAhorroProgramado;
@@ -63,6 +64,10 @@ public class Controller {
     }
 
     public void enviarDeposito(String numero, double monto) {
+        int pos = logica.buscarCuenta(numero);
+        
+        CuentaAhorroProgramado cuenta = (CuentaAhorroProgramado)logica.getCuentas().get(pos);
+        cuenta.depositos(monto);
         
     }
 }

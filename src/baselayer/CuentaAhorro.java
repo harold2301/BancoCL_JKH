@@ -11,9 +11,9 @@ public class CuentaAhorro extends Cuenta {
     }
 
     @Override
-    public void Retiro(){};
+    public void retiro(){};
     
     @Override
-    public void Depositos(){};
+    public void depositos(){};
 
 }

@@ -25,8 +25,12 @@ public class CuentaAhorroProgramado extends Cuenta{
     }
 
     @Override
-    public void Retiro(){};
+    public void retiro() {
+        
+    }
     
     @Override
-    public void Depositos(){};
+    public void depositos(double monto) {
+        this.setSaldo(getSaldo() + monto);
+    }
 }
