@@ -13,9 +13,6 @@ public class CL {
         this.cuentas = new ArrayList();
     }
     
-    public void agregarCuenta(Cuenta nuevaCuenta) {
-        this.cuentas.add(nuevaCuenta);
-    }
     
     public ArrayList<Cuenta> getCuentas() {
         return cuentas;
@@ -31,34 +28,8 @@ public class CL {
         return -1;
     }
 
-    public int validarCuentaCorriente(CuentaCorriente CC) {
-
-        for (int i = 0; i < cuentas.size(); i++) {
-
-            if (CC.getNumero().equalsIgnoreCase(cuentas.get(i).getNumero())) {
-                return i;
-            }
-        }
-        return -1;
-    }
-
-    public void registrarCuentaCorriente(CuentaCorriente CC) {
-        cuentas.add(CC);
-    }
-
-    public int validarCuentaAhorro(CuentaAhorro CA) {
-
-        for (int i = 0; i < cuentas.size(); i++) {
-
-            if (CA.getNumero().equalsIgnoreCase(cuentas.get(i).getNumero())) {
-                return i;
-            }
-        }
-        return -1;
-    }
-
-    public void registrarCuentaAhorro(CuentaAhorro CA) {
-        cuentas.add(CA);
+    public void agregarCuenta(Cuenta nuevaCuenta) {
+        this.cuentas.add(nuevaCuenta);
     }
 
 }
