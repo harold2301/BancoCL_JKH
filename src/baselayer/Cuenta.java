@@ -2,7 +2,7 @@ package baselayer;
 
 public abstract class Cuenta {
     private double saldo;
-    private int numero;
+    private String numero;
 
     public double getSaldo() {
         return saldo;
@@ -12,11 +12,11 @@ public abstract class Cuenta {
         this.saldo = saldo;
     }
 
-    public int getNumero() {
+    public String getNumero() {
         return numero;
     }
 
-    public void setNumero(int numero) {
+    public void setNumero(String numero) {
         this.numero = numero;
     }
 
