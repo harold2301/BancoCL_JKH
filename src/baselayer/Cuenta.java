@@ -28,7 +28,7 @@ public abstract class Cuenta {
                 + "\nNúmero: " + numero;
     }
 
-    public abstract void Retiro();
+    public abstract void retiro();
 
-    public abstract void Depositos();
+    public abstract void depositos(double saldo);
 }

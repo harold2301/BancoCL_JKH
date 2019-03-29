@@ -12,11 +12,11 @@ public class CuentaCorriente extends Cuenta {
     }
 
     @Override
-    public void Retiro() {
+    public void retiro() {
     }
 
     @Override
-    public void Depositos() {
+    public void depositos(double monto) {
     }
 ;
 }
