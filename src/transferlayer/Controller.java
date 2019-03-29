@@ -1,5 +1,6 @@
 package transferlayer;
 
+import baselayer.Cliente;
 import baselayer.CuentaAhorro;
 import baselayer.CuentaCorriente;
 import baselayer.CuentaAhorroProgramado;
@@ -14,6 +15,22 @@ public class Controller {
     public Controller() {
     }
 
+    public int enviarCliente(String nombre, String cedula, String direccion) {
+        int valida;
+        valida = logica.buscarCliente(cedula);
+
+        if (valida == -1) {
+
+            Cliente cliente = new Cliente();
+            cliente.setNumero(nombre);
+            cliente.setSaldo(cedula);
+            cliente.setSaldo(direccion);
+            logica.agregarCuenta(cliente);
+        }
+
+        return valida;
+
+    }
     public int enviarCuentaCorriente(String numeroCuenta, double saldoInicial) {
         int valida;
         valida = logica.buscarCuenta(numeroCuenta);
@@ -35,6 +52,8 @@ public class Controller {
         int pos = logica.buscarCuenta(numero);
 
         if (pos != -1) {
+            //Se castea la cuenta corriente, ya que se necesita una cuente corriente
+            //existente para que pueda existir una cuenta de ahorro programado
             CuentaCorriente cuenta = (CuentaCorriente) logica.getCuentas().get(pos);
 
             CuentaAhorroProgramado nuevaCuenta = new CuentaAhorroProgramado(cuenta);

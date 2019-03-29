@@ -3,7 +3,8 @@ package baselayer;
 public abstract class Cuenta {
     private double saldo;
     private String numero;
-
+    public String nombre;
+    public String apellido;
     public double getSaldo() {
         return saldo;
     }
@@ -22,6 +23,7 @@ public abstract class Cuenta {
 
     @Override
     public String toString() {
+        
         return "Saldo: " + saldo 
                 + "\nNúmero: " + numero;
     }
