@@ -1,7 +1,10 @@
 package baselayer;
 
+import java.time.LocalDate;
+
 public class CuentaAhorroProgramado extends Cuenta{
     private CuentaCorriente cuentaCorriente; //solo 1
+    private LocalDate fechaCreación;
 
     public CuentaAhorroProgramado() {}
     
@@ -15,6 +18,14 @@ public class CuentaAhorroProgramado extends Cuenta{
 
     public void setCuentaCorriente(CuentaCorriente cuentaCorriente) {
         this.cuentaCorriente = cuentaCorriente;
+    }
+
+    public LocalDate getFechaCreación() {
+        return fechaCreación;
+    }
+
+    public void setFechaCreación(LocalDate fechaCreación) {
+        this.fechaCreación = fechaCreación;
     }
 
     @Override

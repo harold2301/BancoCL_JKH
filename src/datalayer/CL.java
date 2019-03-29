@@ -2,13 +2,15 @@ package datalayer;
 
 import baselayer.Cliente;
 import baselayer.Cuenta;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.util.ArrayList;
 
 public class CL {
 
     ArrayList<Cliente> clientes;
     Cliente cliente = new Cliente();
-
+    
     public ArrayList<Cliente> getCliente() {
         return clientes;
     }
