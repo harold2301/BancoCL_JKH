@@ -8,11 +8,12 @@ public class Cliente {
     private String direccion;
     private ArrayList<Cuenta> cuentas; // puede tener varias
 
-    public Cliente(String nombre, String cedula, String direccion, ArrayList<Cuenta> cuentas) {
+    public Cliente() {}
+    
+    public Cliente(String nombre, String cedula, String direccion) {
         this.nombre = nombre;
         this.cedula = cedula;
         this.direccion = direccion;
-        this.cuentas = cuentas;
     }
 
     public String getNombre() {
@@ -41,10 +42,6 @@ public class Cliente {
 
     public ArrayList<Cuenta> getCuentas() {
         return cuentas;
-    }
-
-    public void setCuentas(ArrayList<Cuenta> cuentas) {
-        this.cuentas = cuentas;
     }
 
     @Override

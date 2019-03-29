@@ -1,12 +1,8 @@
 package transferlayer;
 
-<<<<<<< HEAD
 import baselayer.Cliente;
-=======
 import baselayer.Cuenta;
->>>>>>> 3198fe8f614b234263fe143aa5ce16b3fb14ea70
 import baselayer.CuentaAhorro;
-import baselayer.CuentaCorriente;
 import baselayer.CuentaAhorroProgramado;
 import baselayer.CuentaCorriente;
 import datalayer.CL;
@@ -18,23 +14,7 @@ public class Controller {
 
     public Controller() {
     }
-
-    public int enviarCliente(String nombre, String cedula, String direccion) {
-        int valida;
-        valida = logica.buscarCliente(cedula);
-
-        if (valida == -1) {
-
-            Cliente cliente = new Cliente();
-            cliente.setNumero(nombre);
-            cliente.setSaldo(cedula);
-            cliente.setSaldo(direccion);
-            logica.agregarCuenta(cliente);
-        }
-
-        return valida;
-
-    }
+    
     public int enviarCuentaCorriente(String numeroCuenta, double saldoInicial) {
         int valida;
         valida = logica.buscarCuenta(numeroCuenta);
@@ -44,27 +24,53 @@ public class Controller {
             CuentaCorriente CC = new CuentaCorriente();
             CC.setNumero(numeroCuenta);
             CC.setSaldo(saldoInicial);
-            logica.agregarCuenta(CC);
         }
 
         return valida;
 
     }
+    
+    public int enviarCliente(String nombre, String id, String direccion, String numeroCuenta, double saldoInicial) {
+        int valida;
+        
+        // Validación de buscar cliente
+//        if (true) {
+            // Validación de buscar
+            valida = logica.buscarCuenta(numeroCuenta);
+            if (valida == -1) {
 
-    public int enviarCuenta(String numero, double monto) {
+                CuentaCorriente CC = new CuentaCorriente();
+                CC.setNumero(numeroCuenta);
+                CC.setSaldo(saldoInicial);
+                
+                logica.agregarCuenta(CC);
+            }
+//            
+//        }
+
+
+        return valida;
+
+    }
+
+    public int enviarCuentaProgramada(String identificacion, String numero, double monto) {
 
         int pos = logica.buscarCuenta(numero);
 
+        Cuenta cuenta = logica.getCuentas().get(pos);
+        CuentaCorriente cc = new CuentaCorriente();
+        
         if (pos != -1) {
-            //Se castea la cuenta corriente, ya que se necesita una cuente corriente
-            //existente para que pueda existir una cuenta de ahorro programado
-            CuentaCorriente cuenta = (CuentaCorriente) logica.getCuentas().get(pos);
+            
+            if (cuenta.getClass() == cc.getClass()) {
+                
+                CuentaAhorroProgramado nuevaCuenta = new CuentaAhorroProgramado((CuentaCorriente)cuenta);
+                nuevaCuenta.setNumero(numero);
 
-            CuentaAhorroProgramado nuevaCuenta = new CuentaAhorroProgramado(cuenta);
-            nuevaCuenta.setNumero(numero);
-            nuevaCuenta.setSaldo(monto);
+                logica.agregarCuenta(nuevaCuenta);
+                return -2;
+            }
 
-            logica.agregarCuenta(nuevaCuenta);
         }
 
         return pos;
