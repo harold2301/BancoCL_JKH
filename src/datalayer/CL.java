@@ -46,5 +46,9 @@ public class CL {
     public void agregarCuenta(Cuenta nuevaCuenta) {
         this.cuentas.add(nuevaCuenta);
     }
+    
+    public void agregarCliente(Cliente miCliente) {
+        this.clientes.add(miCliente);
+    }
 
 }

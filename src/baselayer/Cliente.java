@@ -3,16 +3,19 @@ package baselayer;
 import java.util.ArrayList;
 
 public class Cliente {
+
     private String nombre;
     private String cedula;
     private String direccion;
     private ArrayList<Cuenta> cuentas; // puede tener varias
 
-    public Cliente(String nombre, String cedula, String direccion, ArrayList<Cuenta> cuentas) {
+    public Cliente() {
+    }
+
+    public Cliente(String nombre, String cedula, String direccion) {
         this.nombre = nombre;
         this.cedula = cedula;
         this.direccion = direccion;
-        this.cuentas = cuentas;
     }
 
     public String getNombre() {
@@ -49,9 +52,9 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return "Nombre: " + nombre 
-                + "\nCédula: " + cedula 
-                + "\nDirección: " + direccion 
+        return "Nombre: " + nombre
+                + "\nCédula: " + cedula
+                + "\nDirección: " + direccion
                 + "\nCuentas: " + cuentas;
     }
 }
