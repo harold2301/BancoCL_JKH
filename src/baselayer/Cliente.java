@@ -7,16 +7,10 @@ public class Cliente {
     private String nombre;
     private String cedula;
     private String direccion;
-    private ArrayList<Cuenta> cuentas; // puede tener varias
+    private ArrayList<Cuenta> cuentas = new ArrayList(); // puede tener varias
 
-<<<<<<< HEAD
-    public Cliente() {
-    }
-
-=======
     public Cliente() {}
     
->>>>>>> 12f840f6546ef0e0f82b9aaf2ced3a0fbb888b48
     public Cliente(String nombre, String cedula, String direccion) {
         this.nombre = nombre;
         this.cedula = cedula;
@@ -49,6 +43,10 @@ public class Cliente {
 
     public ArrayList<Cuenta> getCuentas() {
         return cuentas;
+    }
+    
+    public void setCuentas(ArrayList<Cuenta> cuenta) {
+        this.cuentas = cuenta;
     }
 
     @Override

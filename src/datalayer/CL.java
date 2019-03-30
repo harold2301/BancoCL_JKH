@@ -8,10 +8,10 @@ import java.util.ArrayList;
 
 public class CL {
 
-    ArrayList<Cliente> clientes;
+    ArrayList<Cliente> clientes = new ArrayList();
     Cliente cliente = new Cliente();
     
-    public ArrayList<Cliente> getCliente() {
+    public ArrayList<Cliente> getClientes() {
         return clientes;
     }
 
