@@ -58,7 +58,6 @@ public class Controller {
         int cliente = logica.buscarCliente(identificacion);
 
         logica.getClientes().get(cliente).getCuentas().add(CC);
-
     }
 
     public void enviarCuentaAhorro(String identificacion, String numeroCuenta, double saldoInicial) {
@@ -70,9 +69,8 @@ public class Controller {
         int cliente = logica.buscarCliente(identificacion);
 
         logica.getClientes().get(cliente).getCuentas().add(CA);
-
     }
-
+    
     public int enviarCuentaProgramada(String identificacion, String numero, String numeroCuenta, double monto) {
 
         int pos = logica.buscarCuenta(numero);
