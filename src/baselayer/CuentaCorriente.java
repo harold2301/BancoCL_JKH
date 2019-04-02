@@ -6,9 +6,9 @@ public class CuentaCorriente extends Cuenta {
 
     @Override
     public String toString() {
-        return "CuentaCorriente"
-                + "\nSaldo: " + getSaldo()
-                + "\nNúmero: " + getNumero();
+        return "\n  - Cuenta corriente"
+                + "\n       * Número: " + getNumero()
+                + "\n       * Saldo: " + getSaldo();
     }
 
     @Override

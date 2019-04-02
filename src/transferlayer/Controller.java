@@ -1,12 +1,8 @@
 package transferlayer;
 
 import baselayer.Cliente;
-
-import baselayer.Cuenta;
-import baselayer.CuentaAhorro;
-import baselayer.CuentaAhorroProgramado;
-import baselayer.CuentaCorriente;
 import datalayer.CL;
+import java.io.IOException;
 
 public class Controller {
 
@@ -15,78 +11,30 @@ public class Controller {
     public Controller() {
     }
 
-    public void enviarClienteCorriente(String nombre, String id, String direccion, String numeroCuenta, double saldoInicial) {
-
-        Cliente nuevoCliente = new Cliente();
-        CuentaCorriente CC = new CuentaCorriente();
-
-        CC.setNumero(numeroCuenta);
-        CC.setSaldo(saldoInicial);
-        nuevoCliente.setNombre(nombre);
-        nuevoCliente.setCedula(id);
-        nuevoCliente.setDireccion(direccion);
-
-        logica.agregarCuenta(CC);
-        nuevoCliente.setCuentas(logica.getCuentas());
-        logica.agregarCliente(nuevoCliente);
+    public void enviarCliente(String nombre, String id, String direccion, String numeroCuenta, double saldoInicial, String tipo) {
+        
+        String infoCliente = "";
+        String infoCuenta = "";
+        
+        infoCliente = nombre + "," + id + "," + direccion; 
+        infoCuenta = numeroCuenta + "," + saldoInicial + "," + tipo;  // Este es el formato de como se va guardar las cuentas en el archivo
+        
+        logica.registrarCliente(infoCliente, infoCuenta);
 
     }
 
-    public void enviarClienteAhorro(String nombre, String id, String direccion, String numeroCuenta, double saldoInicial) {
-
-        Cliente nuevoCliente = new Cliente();
-        CuentaAhorro CA = new CuentaAhorro();
-
-        CA.setNumero(numeroCuenta);
-        CA.setSaldo(saldoInicial);
-        nuevoCliente.setNombre(nombre);
-        nuevoCliente.setCedula(id);
-        nuevoCliente.setDireccion(direccion);
-
-        logica.agregarCuenta(CA);
-        nuevoCliente.setCuentas(logica.getCuentas());
-        logica.agregarCliente(nuevoCliente);
-
-    }
-
-    public void enviarCuentaCorriente(String identificacion, String numeroCuenta, double saldoInicial) {
-
-        CuentaCorriente CC = new CuentaCorriente();
-        CC.setNumero(numeroCuenta);
-        CC.setSaldo(saldoInicial);
-
-        int cliente = logica.buscarCliente(identificacion);
-
-        logica.getClientes().get(cliente).getCuentas().add(CC);
-    }
-
-    public void enviarCuentaAhorro(String identificacion, String numeroCuenta, double saldoInicial) {
-
-        CuentaAhorro CA = new CuentaAhorro();
-        CA.setNumero(numeroCuenta);
-        CA.setSaldo(saldoInicial);
-
-        int cliente = logica.buscarCliente(identificacion);
-
-        logica.getClientes().get(cliente).getCuentas().add(CA);
+    public void enviarCuenta(String identificacion, String numeroCuenta, double saldoInicial, String tipo) {
+        
+        logica.registrarCuenta(identificacion, numeroCuenta, saldoInicial, tipo);
+    
     }
     
-    public int enviarCuentaProgramada(String identificacion, String numero, String numeroCuenta, double monto) {
-
-        int pos = logica.buscarCuenta(numero);
-        int cliente = logica.buscarCliente(identificacion);
-
-        Cuenta cuenta = logica.getCuentas().get(pos);
-
-        CuentaAhorroProgramado nuevaCuenta = new CuentaAhorroProgramado((CuentaCorriente) cuenta);
-        nuevaCuenta.setNumero(numeroCuenta);
-        nuevaCuenta.setSaldo(monto);
-
-        logica.getClientes().get(cliente).getCuentas().add(cuenta);
-
-        return 1;
+    public void enviarCuentaProgramada(String numeroCC, String numeroCuenta) {
+        
+        logica.registrarCuentaProgramada(numeroCC, numeroCuenta);
+    
     }
-
+    
     public int buscarCliente(String id) {
         int encontrado = logica.buscarCliente(id);
         return encontrado;
@@ -96,12 +44,23 @@ public class Controller {
         int encontrado = logica.buscarCuenta(numero);
         return encontrado;
     }
-
-    public void enviarDeposito(String numero, double monto) {
-        int pos = logica.buscarCuenta(numero);
-
-        CuentaAhorroProgramado cuenta = (CuentaAhorroProgramado) logica.getCuentas().get(pos);
-        cuenta.depositos(monto);
-
+    
+    public String[] listaClientes() {
+        int contador = 0;
+        int size = logica.getClientes().size();
+        String[] info = new String[size];
+        
+        for (Cliente obj : logica.getClientes()) {
+            info[contador] = obj.toString();
+            contador++;
+        }
+        
+        return info;
     }
+    
+    public String mostrarCliente(String identificacion) throws IOException {        
+        Cliente info = logica.mostrarClienteEsp(identificacion);
+        return info.toString();
+    }
+    
 }

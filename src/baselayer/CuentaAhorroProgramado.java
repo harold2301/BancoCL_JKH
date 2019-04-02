@@ -30,9 +30,12 @@ public class CuentaAhorroProgramado extends Cuenta{
 
     @Override
     public String toString() {
-        return "CuentaCorriente: " + cuentaCorriente.toString() +
-                "\nSaldo: " + getSaldo() +
-                "\nNúmero: " + getNumero();
+        return "\n  - Cuenta de ahorro programado:" +
+                "\n       * Número: " + getNumero() + 
+                "\n       * Saldo: " + getSaldo() +
+                "\n             = Cuenta corriente asociada: " +
+                "\n                   + Número: " + cuentaCorriente.getNumero() +
+                "\n                   + Saldo: " + cuentaCorriente.getSaldo();
     }
 
     @Override

@@ -6,8 +6,9 @@ public class CuentaAhorro extends Cuenta {
 
     @Override
     public String toString() {
-        return "Saldo: " + getSaldo() 
-                + "Número: " + getNumero();
+        return "\n  - Cuenta de ahorro"
+                + "\n       * Número: " + getNumero()
+                + "\n       * Saldo: " + getSaldo();
     }
 
     @Override
