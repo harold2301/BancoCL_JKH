@@ -38,12 +38,10 @@ public class CuentaAhorroProgramado extends Cuenta{
                 "\n                   + Saldo: " + cuentaCorriente.getSaldo();
     }
 
-    @Override
-    public void retiro() {
+    public void retiro(double monto) {
         
     }
     
-    @Override
     public void depositos(double monto) {
         this.setSaldo(getSaldo() + monto);
     }

@@ -11,10 +11,8 @@ public class CuentaAhorro extends Cuenta {
                 + "\n       * Saldo: " + getSaldo();
     }
 
-    @Override
-    public void retiro(){};
+    public void retiro(double monto){};
     
-    @Override
     public void depositos(double monto){};
 
 }

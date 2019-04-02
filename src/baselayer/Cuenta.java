@@ -3,8 +3,6 @@ package baselayer;
 public abstract class Cuenta {
     private double saldo;
     private String numero;
-    public String nombre;
-    public String apellido;
     public double getSaldo() {
         return saldo;
     }
@@ -28,7 +26,17 @@ public abstract class Cuenta {
                 + "\nNúmero: " + numero;
     }
 
-    public abstract void retiro();
+    public void retirar(double monto){
+    // validar que el monto a sacar no sea mayor al saldo
+        if(monto <= saldo){
+            saldo= saldo - monto;
+        }
+    }
+    public void depositar(double monto){
+    // aumentar el saldo, siempre que no sea un número negativo.
+        if(monto >0){
+            saldo = monto + saldo;
+        }
+    }
 
-    public abstract void depositos(double saldo);
 }

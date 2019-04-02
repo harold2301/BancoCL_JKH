@@ -63,4 +63,15 @@ public class Controller {
         return info.toString();
     }
     
+    
+   public void enviarDeposito(String numero,double pmonto){
+       
+       logica.aplicarDeposito(numero,pmonto);
+
+   }
+    public void enviarRetiro(String numero,double pmonto){
+        logica.aplicarRetiro(numero,pmonto);
+
+
+    }
 }

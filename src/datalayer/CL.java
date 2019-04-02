@@ -390,6 +390,16 @@ public class CL {
         return tmpCliente;
     }
 
+    public void aplicarRetiro(String numero,double pmonto){
+    
+    };
+    
+    public void aplicarDeposito(String numero, double pmonto){
+    
+    };
+    
+
+
     // Cuenta la cantidad de lineas que hay en el archivo
     public int cantLineas() throws IOException {
         FileReader reader = new FileReader("Cuentas.txt");
