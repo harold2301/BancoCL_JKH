@@ -1,8 +1,10 @@
 package transferlayer;
 
 import baselayer.Cliente;
+import baselayer.Cuenta;
 import datalayer.CL;
 import java.io.IOException;
+import java.time.LocalDate;
 
 public class Controller {
 
@@ -16,8 +18,8 @@ public class Controller {
         String infoCliente = "";
         String infoCuenta = "";
         
-        infoCliente = nombre + "," + id + "," + direccion; 
-        infoCuenta = numeroCuenta + "," + saldoInicial + "," + tipo;  // Este es el formato de como se va guardar las cuentas en el archivo
+        infoCliente = nombre + "," + id + "," + direccion;
+        infoCuenta = numeroCuenta + "," + saldoInicial + "," + tipo;// Este es el formato de como se va guardar las cuentas en el archivo
         
         logica.registrarCliente(infoCliente, infoCuenta);
 
@@ -29,9 +31,9 @@ public class Controller {
     
     }
     
-    public void enviarCuentaProgramada(String numeroCC, String numeroCuenta) {
+    public void enviarCuentaProgramada(String numeroCC, String numeroCuenta, LocalDate fechaCreacion) {
         
-        logica.registrarCuentaProgramada(numeroCC, numeroCuenta);
+        logica.registrarCuentaProgramada(numeroCC, numeroCuenta, fechaCreacion);
     
     }
     

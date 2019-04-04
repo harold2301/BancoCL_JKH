@@ -33,6 +33,7 @@ public class CuentaAhorroProgramado extends Cuenta{
         return "\n  - Cuenta de ahorro programado:" +
                 "\n       * Número: " + getNumero() + 
                 "\n       * Saldo: " + getSaldo() +
+                "\n       * Fecha de creació: " + getFechaCreación()+
                 "\n             = Cuenta corriente asociada: " +
                 "\n                   + Número: " + cuentaCorriente.getNumero() +
                 "\n                   + Saldo: " + cuentaCorriente.getSaldo();

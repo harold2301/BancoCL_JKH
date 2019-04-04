@@ -7,16 +7,28 @@ import baselayer.CuentaAhorroProgramado;
 import baselayer.CuentaCorriente;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class CL {
 
+    public String [] cuentasProgramdas (){
+        String [] cuentas = null;
+        
+        
+        
+        return cuentas;
+    }
     // Función para buscar un cliente, retorna la fila en la que está
+    
     public int buscarCliente(String cedula) {
         int encontrado = 0;
         try {
@@ -125,7 +137,7 @@ public class CL {
             }
 
             info[cont] = info[cont] + "/" + numeroCuenta + "," + monto + "," + tipo; // Inserta la nueva cuenta en la posición que 
-                                                                                     // hace referencia a la del cliente
+            // hace referencia a la del cliente
 
             bufferCuentas.close();
 
@@ -150,7 +162,7 @@ public class CL {
         }
     }
 
-    public void registrarCuentaProgramada(String numeroCC, String numeroCuenta) {
+    public void registrarCuentaProgramada(String numeroCC, String numeroCuenta, LocalDate fechaCreacion) {
 
         try {
 
@@ -185,8 +197,10 @@ public class CL {
                         concat2 += cuentas[i] + "/";
                     }
 
-                    info[j] = concat2 + numeroCuenta + "," + monto + ",CP" + "," + numeroCC; // Ingresa la nueva cuenta con el porcentaje
-                }                                                                            // obtenido del saldo de la cuenta corriente
+                    info[j] = concat2 + numeroCuenta + "," + monto + "," 
+                            + fechaCreacion + "," + "CP" + "," + numeroCC; 
+                            // Ingresa la nueva cuenta con el porcentaje
+                }          // obtenido del saldo de la cuenta corriente
 
                 j++;
             }
@@ -390,15 +404,136 @@ public class CL {
         return tmpCliente;
     }
 
-    public void aplicarRetiro(String numero,double pmonto){
-    
-    };
-    
-    public void aplicarDeposito(String numero, double pmonto){
-    
-    };
-    
+    public void aplicarRetiro(String numero, double pmonto) {
+        try {
 
+            FileReader readerCuentas = new FileReader("Cuentas.txt");
+            BufferedReader buffer = new BufferedReader(readerCuentas);
+
+            String datos, concat = "", concat2 = "";
+            String[] cuentas, cuenta;
+            String[] info = new String[cantLineas()];
+            int encontrada = buscarCuenta(numero); // Función que retorna la posición de la cuenta corriente
+            int j = 0;
+            while ((datos = buffer.readLine()) != null) {
+                info[j] = datos;//Se meten los datos en el arreglo de CADA LINEA del archivo.txt
+
+                if (j == encontrada) { // Cuando j esté en la posición de la cuenta ejecuta el siguiente código
+                    // Cuando encuentra la posicion del numero de cuenta que voy a depositar
+                    // y coincide con la iteracion entonces se ejecuta lo siguiente
+                    cuentas = datos.split("/");//Se almacena las cuentas (de la linea que se esta ejecutando del while)
+                    // una a una (de la cuenta encontrada), en el arreglo de cuentas 
+
+                    for (int i = 0; i < cuentas.length; i++) {
+                        cuenta = cuentas[i].split(",");//Separa la informacion de la cuenta obtenida
+                        // [0] = id
+                        // [1] = monto
+                        // [2] = tipo
+
+                        if (cuenta[0].equals(numero)) {//Si el [0]id es igual al numero de cuenta se ejecuta
+
+                            double monto2 = Double.parseDouble(cuenta[1]);//Saco el monto de cuenta 
+                            double montoNuevo = monto2 - pmonto;//Le atribuyo el deposito
+                            cuentas[i] = cuenta[0] + "," + montoNuevo + "," + cuenta[2];//Sobreescribo la informacion
+                            //en la posicion correspondiente
+                        }//Fin del if
+
+                        concat2 += cuentas[i] + "/";//Concateno la informacion (las cuentas) de una sola linea
+                    }//Fin del for
+
+                    info[j] = concat2;
+                }//Fin del if
+                j++;
+            }//Fin del while
+
+            for (int k = 0; k < info.length; k++) {
+                if (k == info.length) {
+                    concat += info[k];
+                } else {
+                    concat += info[k] + "\n";
+                }
+            }
+
+            readerCuentas.close();
+
+            FileOutputStream stream = new FileOutputStream("Cuentas.txt");
+            OutputStreamWriter output = new OutputStreamWriter(stream,
+                    "UTF-8");
+            BufferedWriter writeNew = new BufferedWriter(output);
+
+            writeNew.write(concat);
+            writeNew.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+   
+    
+    public void aplicarDeposito(String numero, double pmonto) {
+        try {
+
+            FileReader readerCuentas = new FileReader("Cuentas.txt");
+            BufferedReader buffer = new BufferedReader(readerCuentas);
+
+            String datos, concat = "", concat2 = "";
+            String[] cuentas, cuenta;
+            String[] info = new String[cantLineas()];
+            int encontrada = buscarCuenta(numero); // Función que retorna la posición de la cuenta corriente
+            int j = 0;
+            while ((datos = buffer.readLine()) != null) {
+                info[j] = datos;//Se meten los datos en el arreglo de CADA LINEA del archivo.txt
+
+                if (j == encontrada) { // Cuando j esté en la posición de la cuenta ejecuta el siguiente código
+                    // Cuando encuentra la posicion del numero de cuenta que voy a depositar
+                    // y coincide con la iteracion entonces se ejecuta lo siguiente
+                    cuentas = datos.split("/");//Se almacena las cuentas (de la linea que se esta ejecutando del while)
+                    // una a una (de la cuenta encontrada), en el arreglo de cuentas 
+
+                    for (int i = 0; i < cuentas.length; i++) {
+                        cuenta = cuentas[i].split(",");//Separa la informacion de la cuenta obtenida
+                        // [0] = id
+                        // [1] = monto
+                        // [2] = tipo
+
+                        if (cuenta[0].equals(numero)) {//Si el [0]id es igual al numero de cuenta se ejecuta
+
+                            double monto2 = Double.parseDouble(cuenta[1]);//Saco el monto de cuenta 
+                            double montoNuevo = monto2 + pmonto;//Le atribuyo el deposito
+                            cuentas[i] = cuenta[0] + "," + montoNuevo + "," + cuenta[2];//Sobreescribo la informacion
+                            //en la posicion correspondiente
+                        }//Fin del if
+
+                        concat2 += cuentas[i] + "/";//Concateno la informacion (las cuentas) de una sola linea
+                    }//Fin del for
+
+                    info[j] = concat2;
+                }//Fin del if
+                j++;
+            }//Fin del while
+
+            for (int k = 0; k < info.length; k++) {
+                if (k == info.length) {
+                    concat += info[k];
+                } else {
+                    concat += info[k] + "\n";
+                }
+            }
+
+            readerCuentas.close();
+
+            FileOutputStream stream = new FileOutputStream("Cuentas.txt");
+            OutputStreamWriter output = new OutputStreamWriter(stream,
+                    "UTF-8");
+            BufferedWriter writeNew = new BufferedWriter(output);
+
+            writeNew.write(concat);
+            writeNew.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
 
     // Cuenta la cantidad de lineas que hay en el archivo
     public int cantLineas() throws IOException {
